@@ -1,0 +1,55 @@
+[project]
+name = 'windows-repack'
+
+[tool.basedpyright]
+strict = ['windows_repack.py']
+typeCheckingMode = 'basic'
+
+[tool.pixi.project]
+channels = ['conda-forge']
+platforms = ['win-64']
+
+[tool.pixi.dependencies]
+beautifulsoup4 = '*'
+mingw-w64-ucrt-x86_64-crt-git = '*'
+pooch = '>=1.8.2'
+pydantic-settings = '>=2.7.0'
+python = '>=3.12.0'
+rich-argparse = '>=1.6.0'
+vs_win-64 = '>=2022.12.0'
+
+[tool.pydantic-settings.appx]
+include = [
+    # 'Microsoft.DesktopAppInstaller_8wekyb3d8bbwe',
+    # 'Microsoft.HEIFImageExtension_8wekyb3d8bbwe',
+    # 'Microsoft.HEVCVideoExtension_8wekyb3d8bbwe',
+    # 'Microsoft.MPEG2VideoExtension_8wekyb3d8bbwe',
+    # 'Microsoft.Office.Desktop.Word_8wekyb3d8bbwe',
+    # 'Microsoft.Paint_8wekyb3d8bbwe',
+    # 'Microsoft.PowerShell_8wekyb3d8bbwe',
+    # 'Microsoft.RawImageExtension_8wekyb3d8bbwe',
+    # 'Microsoft.SysinternalsSuite_8wekyb3d8bbwe',
+    # 'Microsoft.Windows.Photos_8wekyb3d8bbwe',
+    # 'Microsoft.WindowsTerminal_8wekyb3d8bbwe',
+    # 'Microsoft.ZuneMusic_8wekyb3d8bbwe',
+    # 'MicrosoftCorporationII.WindowsSubsystemForLinux_8wekyb3d8bbwe',
+    # 'NVIDIACorp.NVIDIAControlPanel_56jybvy8sckqj',
+]
+exclude = [
+    'Microsoft.Media.PlayReadyClient.2',
+    'Microsoft.Media.PlayReadyClient',
+    'Microsoft.NET.Native.Framework.1.3',
+    'Microsoft.NET.Native.Framework.1.7',
+    'Microsoft.NET.Native.Runtime.1.7',
+    'Microsoft.Office.Desktop.Access',
+    'Microsoft.Office.Desktop.OneNote',
+    'Microsoft.Office.Desktop.Outlook',
+    'Microsoft.Office.Desktop.Project',
+    'Microsoft.Office.Desktop.Publisher',
+    'Microsoft.Office.Desktop.SkypeForBusiness',
+    'Microsoft.Office.Desktop.Visio',
+    'Microsoft.UI.Xaml.2.0',
+    'Microsoft.UI.Xaml.2.1',
+    'Microsoft.UI.Xaml.2.4',
+    'Microsoft.UI.Xaml.2.7',
+]

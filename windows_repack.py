@@ -24,8 +24,6 @@ import requests
 import rich.logging
 import rich_argparse
 
-_W = r'[a-zA-Z0-9]'
-
 
 def main():
     if len(sys.argv) == 1:
@@ -50,7 +48,7 @@ class _AppxSettings(pydantic.BaseModel):
         str,
         pydantic.StringConstraints(
             min_length=17,
-            pattern=fr'^[A-Z]{_W}*\.[A-Z]{_W}*(\.{_W}+)*_[a-z0-9]{{13}}$',
+            pattern=r'^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+_[a-z0-9]{13}$',
             strict=True,
             strip_whitespace=True,
         ),
@@ -59,7 +57,7 @@ class _AppxSettings(pydantic.BaseModel):
         str,
         pydantic.StringConstraints(
             min_length=3,
-            pattern=fr'^[A-Z]{_W}*\.[A-Z]{_W}*(\.{_W}+)*$',
+            pattern=r'^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+$',
             strict=True,
             strip_whitespace=True,
         ),

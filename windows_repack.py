@@ -1,3 +1,4 @@
+import argparse
 import contextlib
 import ctypes.wintypes
 import itertools
@@ -22,18 +23,21 @@ import pydantic
 import pydantic_settings
 import requests
 import rich.logging
-import rich_argparse
 
 
 def main():
     if len(sys.argv) == 1:
-        sys.argv.append('--help')
+        cli_args = ['--help']
+        cli_settings_source = None
+    else:
+        cli_args = None
+        cli_settings_source = pydantic_settings.CliSettingsSource[
+            argparse.ArgumentParser](_Main)
+        cli_settings_source.root_parser.suggest_on_error = True
     pydantic_settings.CliApp.run(
         _Main,
-        cli_settings_source=pydantic_settings.CliSettingsSource(
-            _Main,
-            formatter_class=rich_argparse.RawDescriptionRichHelpFormatter,
-        ),
+        cli_args=cli_args,
+        cli_settings_source=cli_settings_source,
     )
 
 

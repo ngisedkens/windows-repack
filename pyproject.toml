@@ -5,22 +5,22 @@ name = 'windows-repack'
 strict = ['windows_repack.py']
 typeCheckingMode = 'basic'
 
-[tool.pixi.project]
+[tool.pixi.workspace]
 channels = ['conda-forge']
 platforms = ['win-64']
 
 [tool.pixi.dependencies]
-beautifulsoup4 = '*'
+beautifulsoup4 = '>=4.4.0,<=4.13.4'
 mingw-w64-ucrt-x86_64-crt-git = '*'
 pooch = '>=1.8.2'
 pydantic-settings = '>=2.7.0'
-python = '>=3.12.0'
-rich-argparse = '>=1.6.0'
+python = '>=3.14.0'
+rich = '>=14.2.0'
 vs_win-64 = '>=2022.12.0'
 
 [tool.pydantic-settings.appx]
 include = [
-    # '38002AlexanderFrangos.TwinkleTray_m7qx9dzpwqaze',
+    # '10186emoacht.Monitorian_0q7myvhtpbc7w',
     # 'Microsoft.DesktopAppInstaller_8wekyb3d8bbwe',
     # 'Microsoft.HEIFImageExtension_8wekyb3d8bbwe',
     # 'Microsoft.HEVCVideoExtension_8wekyb3d8bbwe',

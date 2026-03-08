@@ -10,7 +10,6 @@ import sys
 import time
 import types
 from typing import Annotated
-from typing import cast
 from typing import Literal
 from typing import override
 from typing import TYPE_CHECKING
@@ -210,7 +209,6 @@ class _Main(pydantic_settings.BaseSettings):
         settings = _Settings()
         _setup_logging()
         nsudo = _nsudo()
-        pwsh = _pwsh()
         info = _appx_info(settings.appx)
         _appx_latest(settings.appx, info)
         args = subprocess.list2cmdline([
@@ -235,7 +233,7 @@ class _Main(pydantic_settings.BaseSettings):
             ctypes.wintypes.LPCWSTR,  # lpDirectory
             ctypes.wintypes.INT,  # nShowCmd
         )(('ShellExecuteW', ctypes.windll.shell32))
-        if ShellExecuteW(None, 'runas', pwsh, args, None, 3) <= 32:
+        if ShellExecuteW(None, 'runas', 'pwsh', args, None, 3) <= 32:
             winerror = ctypes.GetLastError()
             raise OSError(None, ctypes.FormatError(winerror), None, winerror)
 
@@ -341,30 +339,6 @@ def _pooch_retrieve(
     fname = pooch.retrieve(url, known_hash, fname, path, None, downloader)  # pyright: ignore[reportUnknownMemberType]
     assert isinstance(fname, str)
     return fname
-
-
-@_requests_session()
-def _pwsh():
-    hashes = _pooch_retrieve(
-        'https://mirrors.cernet.edu.cn/PowerShell/LatestRelease/hashes.sha256',
-    )
-    with open(hashes, encoding='ascii') as f:
-        for line in f:
-            if '-win-x64.zip' in line:
-                break
-        else:
-            assert False, 'unreachable'
-    fname = line[66:].strip()
-    files = pooch.retrieve(  # pyright: ignore[reportUnknownMemberType, reportUnknownVariableType]
-        f'https://mirrors.cernet.edu.cn/PowerShell/LatestRelease/{fname}',
-        known_hash=line[:64],
-        processor=pooch.Unzip(),
-    )
-    assert isinstance(files, list)
-    for fname in cast('list[str]', files):
-        if os.path.basename(fname) == 'pwsh.exe':
-            return fname
-    assert False, 'unreachable'
 
 
 class _Settings(pydantic_settings.BaseSettings):

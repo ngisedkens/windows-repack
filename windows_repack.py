@@ -323,9 +323,7 @@ def _pooch_fetch(
     fname: str,
     downloader: pooch.HTTPDownloader | None = None,
 ):
-    fname = pup.fetch(fname, downloader=downloader)  # pyright: ignore[reportUnknownMemberType, reportUnknownVariableType]
-    assert isinstance(fname, str)
-    return fname
+    return pup.fetch(fname, downloader=downloader)  # pyright: ignore[reportArgumentType]
 
 
 def _pooch_retrieve(
@@ -336,9 +334,13 @@ def _pooch_retrieve(
     *,
     downloader: pooch.HTTPDownloader | None = None,
 ):
-    fname = pooch.retrieve(url, known_hash, fname, path, None, downloader)  # pyright: ignore[reportUnknownMemberType]
-    assert isinstance(fname, str)
-    return fname
+    return pooch.retrieve(  # pyright: ignore[reportUnknownMemberType]
+        url,
+        known_hash,
+        fname,
+        path,
+        downloader=downloader,  # pyright: ignore[reportArgumentType]
+    )
 
 
 class _Settings(pydantic_settings.BaseSettings):

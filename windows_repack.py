@@ -296,11 +296,14 @@ def _nsudo():
         subprocess.run(
             [
                 'cl',
+                '/arch:AVX2',
                 f'/Fe{fe}',
                 '/GL',
                 '/I.',
                 '/LD',
                 '/MD',
+                '/MP',
+                '/nologo',
                 '/O2',
                 _pooch_fetch(pup, 'NSudoDevilMode.cpp', downloader),
                 _pooch_fetch(pup, 'detours.cpp', downloader),

@@ -1,5 +1,7 @@
 [project]
 name = 'windows-repack'
+version = '0.1.0'
+requires-python = '>=3.14'
 
 [tool.basedpyright]
 strict = ['windows_repack.py']
@@ -15,9 +17,8 @@ mingw-w64-ucrt-x86_64-crt-git = '*'
 pooch = '>=1.9.0'
 powershell = { channel = 'https://prefix.dev/github-releases' }
 pydantic-settings = '>=2.7.0'
-python = '>=3.14.0'
 rich = '>=14.2.0'
-vs_win-64 = '>=2022.12.0'
+vs_win-64 = '>=2022.14.0'
 
 [tool.pydantic-settings.appx]
 include = [

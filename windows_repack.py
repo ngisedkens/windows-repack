@@ -70,6 +70,7 @@ class _AppxSettings(pydantic.BaseModel):
 @contextlib.contextmanager
 def _requests_session(method: str = 'get'):
     mod = types.ModuleType('requests')
+    mod.exceptions = requests.exceptions
     with requests.Session() as session:
         mod.get = getattr(session, method)  # pyright: ignore[reportAttributeAccessIssue]
         sys.modules['requests'] = mod

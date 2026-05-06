@@ -8,14 +8,13 @@ strict = ['windows_repack.py']
 typeCheckingMode = 'basic'
 
 [tool.pixi.workspace]
-channels = ['conda-forge', 'https://prefix.dev/github-releases']
+channels = ['conda-forge']
 platforms = ['win-64']
 
 [tool.pixi.dependencies]
 beautifulsoup4 = '>=4.4.0,<=4.13.4'
 mingw-w64-ucrt-x86_64-crt-git = '*'
 pooch = '>=1.9.0'
-powershell = { channel = 'https://prefix.dev/github-releases' }
 pydantic-settings = '>=2.7.0'
 rich = '>=14.2.0'
 vs_win-64 = '>=2022.14.0'

@@ -111,7 +111,6 @@ Dism.exe /Image:$path /Import-DefaultAppAssociations:AppAssoc.xml
 
 # Files
 Copy-Item -Force fonts\* $path\Windows\Fonts
-Copy-Item -Force hosts $path\Windows\System32\drivers\etc
 
 # Repair-WindowsImage
 Pop-Location

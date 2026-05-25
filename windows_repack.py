@@ -95,12 +95,16 @@ def _appx_info(settings: _AppxSettings) -> list[_AppxInfo]:
             version=time.strftime('%Y.%m.%d.%H'),
             registry={'GetFiles': None},
         )
-        downloader = pooch.HTTPDownloader(data={
-            'type': 'PackageFamilyName',
-            'url': family_name,
-            'ring': 'Retail',
-            'lang': 'en-US',
-        })
+        downloader = pooch.HTTPDownloader(
+            headers={'Referer': 'https://store.rg-adguard.net/'},
+            data={
+                'type': 'PackageFamilyName',
+                'url': family_name,
+                'ring': 'Retail',
+                'lang': 'en-US',
+            },
+            timeout=300,
+        )
         for _ in range(5):
             response = _pooch_fetch(pup, 'GetFiles', downloader)
             with open(response, encoding='utf-8') as f:
@@ -354,7 +358,7 @@ def _pwsh():
     hashes = _pooch_retrieve(
         'https://mirrors.cernet.edu.cn/PowerShell/LatestRelease/hashes.sha256',
     )
-    with open(hashes, encoding='ascii') as f:
+    with open(hashes, encoding='utf-16') as f:
         for line in f:
             if '-win-x64.zip' in line:
                 break

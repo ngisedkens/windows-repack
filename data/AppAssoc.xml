@@ -40,6 +40,8 @@
   <Association Identifier=".heic" ProgId="AppX4mntx4h978m1v9gtzv0ewksfd6pmwsre" ApplicationName="照片" />
   <Association Identifier=".heif" ProgId="AppX4mntx4h978m1v9gtzv0ewksfd6pmwsre" ApplicationName="照片" />
   <Association Identifier=".hif" ProgId="AppX4mntx4h978m1v9gtzv0ewksfd6pmwsre" ApplicationName="照片" />
+  <Association Identifier=".htm" ProgId="snekdesign.text.html" ApplicationName="AkelPad.exe" />
+  <Association Identifier=".html" ProgId="snekdesign.text.html" ApplicationName="AkelPad.exe" />
   <Association Identifier=".ico" ProgId="AppX4mntx4h978m1v9gtzv0ewksfd6pmwsre" ApplicationName="照片" />
   <Association Identifier=".iiq" ProgId="AppXq8btj36kvahvgqpj75d9n4510vjppa26" ApplicationName="照片" />
   <Association Identifier=".jfif" ProgId="AppX4mntx4h978m1v9gtzv0ewksfd6pmwsre" ApplicationName="照片" />
@@ -91,6 +93,7 @@
   <Association Identifier=".opus" ProgId="AppXqj98qxeaynz6dv4459ayz6bnqxbyaqcs" ApplicationName="媒体播放器" />
   <Association Identifier=".orf" ProgId="AppXq8btj36kvahvgqpj75d9n4510vjppa26" ApplicationName="照片" />
   <Association Identifier=".ori" ProgId="AppXq8btj36kvahvgqpj75d9n4510vjppa26" ApplicationName="照片" />
+  <Association Identifier=".pdf" ProgId="snekdesign.pdf" ApplicationName="SumatraPDF" />
   <Association Identifier=".pef" ProgId="AppXq8btj36kvahvgqpj75d9n4510vjppa26" ApplicationName="照片" />
   <Association Identifier=".png" ProgId="AppX4mntx4h978m1v9gtzv0ewksfd6pmwsre" ApplicationName="照片" />
   <Association Identifier=".r3d" ProgId="AppXq8btj36kvahvgqpj75d9n4510vjppa26" ApplicationName="照片" />
@@ -108,6 +111,7 @@
   <Association Identifier=".tif" ProgId="AppX4mntx4h978m1v9gtzv0ewksfd6pmwsre" ApplicationName="照片" />
   <Association Identifier=".tiff" ProgId="AppX4mntx4h978m1v9gtzv0ewksfd6pmwsre" ApplicationName="照片" />
   <Association Identifier=".tod" ProgId="AppXqj98qxeaynz6dv4459ayz6bnqxbyaqcs" ApplicationName="媒体播放器" />
+  <Association Identifier=".TS" ProgId="snekdesign.text.typescript" ApplicationName="AkelPad.exe" />
   <Association Identifier=".TTS" ProgId="AppXqj98qxeaynz6dv4459ayz6bnqxbyaqcs" ApplicationName="媒体播放器" />
   <Association Identifier=".url" ProgId="InternetShortcut" ApplicationName="Internet 浏览器" />
   <Association Identifier=".wav" ProgId="AppXqj98qxeaynz6dv4459ayz6bnqxbyaqcs" ApplicationName="媒体播放器" />
@@ -121,6 +125,7 @@
   <Association Identifier=".WPL" ProgId="AppXqj98qxeaynz6dv4459ayz6bnqxbyaqcs" ApplicationName="媒体播放器" />
   <Association Identifier=".xht" ProgId="MSEdgeHTM" ApplicationName="Microsoft Edge" />
   <Association Identifier=".xhtml" ProgId="MSEdgeHTM" ApplicationName="Microsoft Edge" />
+  <Association Identifier=".xml" ProgId="snekdesign.text.xml" ApplicationName="AkelPad.exe" />
   <Association Identifier=".xvid" ProgId="AppXqj98qxeaynz6dv4459ayz6bnqxbyaqcs" ApplicationName="媒体播放器" />
   <Association Identifier=".zip" ProgId="CompressedFolder" ApplicationName="Windows 资源管理器" />
   <Association Identifier=".zpl" ProgId="AppXqj98qxeaynz6dv4459ayz6bnqxbyaqcs" ApplicationName="媒体播放器" />

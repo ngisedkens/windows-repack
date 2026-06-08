@@ -71,7 +71,7 @@ class _AppxSettings(pydantic.BaseModel):
 @contextlib.contextmanager
 def _requests_session(method: str = 'get'):
     mod = types.ModuleType('requests')
-    mod.exceptions = requests.exceptions
+    mod.exceptions = requests.exceptions  # pyright: ignore[reportAttributeAccessIssue]
     with requests.Session() as session:
         mod.get = getattr(session, method)  # pyright: ignore[reportAttributeAccessIssue]
         sys.modules['requests'] = mod
@@ -365,7 +365,7 @@ def _pwsh():
         else:
             assert False, 'unreachable'
     fname = line[66:].strip()
-    files = pooch.retrieve(  # pyright: ignore[reportUnknownMemberType, reportUnknownVariableType]
+    files = pooch.retrieve(  # pyright: ignore[reportUnknownMemberType]
         f'https://mirrors.cernet.edu.cn/PowerShell/LatestRelease/{fname}',
         known_hash=line[:64],
         processor=pooch.Unzip(),

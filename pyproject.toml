@@ -19,7 +19,7 @@ pooch = '>=1.9.0'
 powershell = '>=7.5.0'
 pydantic-settings = '>=2.7.0'
 rich = '>=14.2.0'
-vs_win-64 = '>=2022.14.0'
+vs_win-64 = '>=2026.1.0'
 
 [tool.pydantic-settings.appx]
 include = [

@@ -138,16 +138,23 @@ def _appx_info(settings: _AppxSettings) -> list[_AppxInfo]:
     return info
 
 
-def _appx_key(x: _AppxInfo):
+def _appx_key(x: _AppxInfo, win10: bool):
     name, version, platform, _ = x['fname'].split('_', 3)
     version_info = list(map(int, version.split('.')))
-    if name == 'Microsoft.ZuneMusic' and version_info[0] < 2000:
-        version_info[0] += 10000
+    match name:
+        case 'Microsoft.HEVCVideoExtension' if win10 and version_info < [2, 5]:
+            version_info[0] += 10000
+        case 'Microsoft.RawImageExtension' if win10 and version_info < [2, 5]:
+            version_info[0] += 10000
+        case 'Microsoft.ZuneMusic' if version_info < [2000]:
+            version_info[0] += 10000
+        case _:
+            pass
     return version_info, platform != 'x86'
 
 
 @_requests_session()
-def _appx_latest(settings: _AppxSettings, info: list[_AppxInfo]):
+def _appx_latest(settings: _AppxSettings, info: list[_AppxInfo], win10: bool):
     appx = _fullfile(__file__, '../data/appx')
     info.sort(key=lambda x: x['fname'])
     for name, group in itertools.groupby(
@@ -155,7 +162,7 @@ def _appx_latest(settings: _AppxSettings, info: list[_AppxInfo]):
         key=lambda x: x['fname'].split('_', 1)[0],
     ):
         if name not in settings.exclude:
-            latest = max(group, key=_appx_key)
+            latest = max(group, key=lambda x: _appx_key(x, win10))
             _pooch_retrieve(**latest, path=appx)
 
 
@@ -179,6 +186,10 @@ class _Main(pydantic_settings.BaseSettings):
         pydantic.PositiveInt,
         pydantic.Field(description='The index number in the input image file'),
     ] = 1
+    win10: Annotated[
+        pydantic_settings.CliToggleFlag[bool],
+        pydantic.Field(description='The image is Windows 10'),
+    ] = False
 
     output_file: Annotated[
         pydantic.NewPath | None,
@@ -215,7 +226,7 @@ class _Main(pydantic_settings.BaseSettings):
         _setup_logging()
         nsudo = _nsudo()
         info = _appx_info(settings.appx)
-        _appx_latest(settings.appx, info)
+        _appx_latest(settings.appx, info, self.win10)
         args = subprocess.list2cmdline([
             '-nop',
             '-f', _fullfile(__file__, '../scripts/repack.ps1'),

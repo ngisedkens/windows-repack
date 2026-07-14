@@ -24,11 +24,17 @@ if ($input_file -ne 'nul') {
 Push-Location "$PSScriptRoot\..\data"
 
 # Set-WindowsProductKey
-if (
-    Get-WindowsEdition -Path $path |
-        Where-Object Edition -CNotIn ProfessionalWorkstation, ServerStandard
-) {
-    Set-WindowsProductKey -ProductKey DXG7C-N36C4-C4HTG-X4T3X-2YV77 -Path $path
+switch (Get-WindowsEdition -Path $path | ForEach-Object Edition) {
+    'EnterpriseS' {
+        Set-WindowsProductKey -ProductKey QPM6N-7J2WJ-P88HH-P3YRH-YY74H -Path $path
+        break
+    }
+    'IoTEnterpriseS' { break }
+    'ProfessionalWorkstation' { break }
+    'ServerStandard' { break }
+    default {
+        Set-WindowsProductKey -ProductKey DXG7C-N36C4-C4HTG-X4T3X-2YV77 -Path $path
+    }
 }
 
 # AppxProvisionedPackage

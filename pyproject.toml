@@ -23,7 +23,6 @@ vs_win-64 = '>=2026.1.0'
 
 [tool.pydantic-settings.appx]
 include = [
-    # '10186emoacht.Monitorian_0q7myvhtpbc7w',
     # 'Microsoft.DesktopAppInstaller_8wekyb3d8bbwe',
     # 'Microsoft.HEIFImageExtension_8wekyb3d8bbwe',
     # 'Microsoft.HEVCVideoExtension_8wekyb3d8bbwe',
@@ -56,4 +55,5 @@ exclude = [
     'Microsoft.UI.Xaml.2.1',
     'Microsoft.UI.Xaml.2.4',
     'Microsoft.UI.Xaml.2.7',
+    'Microsoft.WindowsAppRuntime.1.7',
 ]
